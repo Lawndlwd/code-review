@@ -1,4 +1,4 @@
-module github.com/levende/code-review
+module github.com/lawndlwd/code-review
 
 go 1.23
 
@@ -10,4 +10,4 @@ require (
 
 require github.com/mattn/go-pointer v0.0.1 // indirect
 
-replace github.com/levende/code-review => .
+replace github.com/lawndlwd/code-review => .

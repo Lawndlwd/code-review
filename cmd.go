@@ -396,14 +396,14 @@ func buildBatchPrompt(bestPractices string, files []FileDiff, contexts []*CodeCo
 	b.WriteString("- Always use the same severity for the same type of violation\n")
 	b.WriteString("- Always phrase comments the same way for identical violations\n")
 
-	// ✅ Log the full prompt to a file
-	logFile := "ai_prompt.log"
-	err := os.WriteFile(logFile, []byte(b.String()), 0644)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "⚠️ Failed to log AI prompt: %v\n", err)
-	} else {
-		fmt.Fprintf(os.Stderr, "📝 AI prompt logged to %s\n", logFile)
-	}
+	// // ✅ Log the full prompt to a file
+	// logFile := "ai_prompt.log"
+	// err := os.WriteFile(logFile, []byte(b.String()), 0644)
+	// if err != nil {
+	// 	fmt.Fprintf(os.Stderr, "⚠️ Failed to log AI prompt: %v\n", err)
+	// } else {
+	// 	fmt.Fprintf(os.Stderr, "📝 AI prompt logged to %s\n", logFile)
+	// }
 
 	return b.String()
 }
