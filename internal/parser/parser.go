@@ -6,7 +6,7 @@ import (
 
 	tree_sitter "github.com/tree-sitter/go-tree-sitter"
 	tree_sitter_javascript "github.com/tree-sitter/tree-sitter-javascript/bindings/go"
-	"github.com/lawndlwd/code-review/internal/types"
+	"github.com/lawndlwd/golum/internal/types"
 )
 
 type Parser struct {

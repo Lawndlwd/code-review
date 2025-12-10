@@ -1,13 +1,21 @@
-# Code Review CLI
+```
+  ██████  ██████  ██       ██    ██  ██████  ███    ██
+ ██       ██   ██ ██       ██    ██ ██    ██ ████   ██
+ ██   ███ ██████  ██       ██    ██ ██    ██ ██ ██  ██
+ ██    ██ ██   ██ ██       ██    ██ ██    ██ ██  ██ ██
+  ██████  ██   ██ ███████  ███████  ██████  ██   ████
+```
 
-AI-powered code review tool that analyzes TypeScript/JavaScript changes against your coding guidelines using Scaleway AI.
+# Golum
+
+**AI-powered code review tool** that analyzes TypeScript/JavaScript changes against your coding guidelines using Scaleway AI. Golum helps maintain code quality by automatically reviewing your code changes and providing actionable feedback based on your team's best practices.
 
 ## Quick Start
 
 ### Run Directly (No Installation)
 
 ```bash
-go run github.com/lawndlwd/code-review@main \
+go run github.com/lawndlwd/golum@main \
   --project-path ../project-name \
   --target-branch origin/main \
   --ai-token $AI_TOKEN \
@@ -18,10 +26,10 @@ go run github.com/lawndlwd/code-review@main \
 
 ```bash
 # Install
-go install github.com/lawndlwd/code-review@main
+go install github.com/lawndlwd/golum@main
 
 # Run
-code-review --project-path ../shire/ --target-branch origin/main --ai-token $AI_TOKEN --rules-file ./rules/rules.md
+golum --project-path ../shire/ --target-branch origin/main --ai-token $AI_TOKEN --rules-file ./rules/rules.md
 ```
 
 ## Prerequisites
@@ -36,7 +44,7 @@ code-review --project-path ../shire/ --target-branch origin/main --ai-token $AI_
 ### Review Current Changes
 
 ```bash
-go run github.com/lawndlwd/code-review@main \
+go run github.com/lawndlwd/golum@main \
   --project-path ../project-name \
   --target-branch origin/main \
   --ai-token $AI_TOKEN \
@@ -46,7 +54,7 @@ go run github.com/lawndlwd/code-review@main \
 ### Review Against a Branch
 
 ```bash
-go run github.com/lawndlwd/code-review@main \
+go run github.com/lawndlwd/golum@main \
   --project-path ../project-name \
   --target-branch origin/main \
   --ai-token $AI_TOKEN \
@@ -58,7 +66,7 @@ go run github.com/lawndlwd/code-review@main \
 Compare your local (staged + unstaged) changes against a remote branch:
 
 ```bash
-go run github.com/lawndlwd/code-review@main \
+go run github.com/lawndlwd/golum@main \
   --project-path ../project-name \
   --target-branch origin/main \
   --ai-token $AI_TOKEN \
@@ -113,7 +121,7 @@ go run github.com/lawndlwd/code-review@main \
 export AI_TOKEN="your-token-here"
 export TARGET_BRANCH="origin/main"
 
-go run github.com/lawndlwd/code-review@main \
+go run github.com/lawndlwd/golum@main \
   --project-path ../project-name \
   --target-branch origin/main \
   --rules-file ./rules/rules.md
@@ -122,7 +130,7 @@ go run github.com/lawndlwd/code-review@main \
 ### Custom AI Endpoint (OpenAI)
 
 ```bash
-go run github.com/lawndlwd/code-review@main \
+go run github.com/lawndlwd/golum@main \
   --project-path ../project-name \
   --target-branch origin/main \
   --ai-token $OPENAI_API_KEY \
@@ -136,7 +144,7 @@ go run github.com/lawndlwd/code-review@main \
 If you have a directory with multiple `.md` files:
 
 ```bash
-go run github.com/lawndlwd/code-review@main \
+go run github.com/lawndlwd/golum@main \
   --project-path ../project-name \
   --target-branch origin/main \
   --ai-token $AI_TOKEN \
@@ -148,7 +156,7 @@ All `.md` files in the directory will be loaded and combined.
 ### Review Specific Repository
 
 ```bash
-go run github.com/lawndlwd/code-review@main \
+go run github.com/lawndlwd/golum@main \
   --project-path /path/to/your/repo \
   --target-branch origin/main \
   --ai-token $AI_TOKEN \
@@ -224,15 +232,15 @@ Found 1 issue(s) across 1 file(s)
 ## Building from Source
 
 ```bash
-git clone https://github.com/lawndlwd/code-review.git
-cd code-review
-go build -o code-review ./cmd
+git clone https://github.com/lawndlwd/golum.git
+cd golum
+go build -o golum ./cmd
 ```
 
 ## Project Structure
 
 ```
-code-review/
+golum/
 ├── cmd/
 │   └── main.go              # CLI entry point
 ├── internal/

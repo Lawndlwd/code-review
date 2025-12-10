@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/lawndlwd/code-review/internal/types"
+	"github.com/lawndlwd/golum/internal/types"
 )
 
 var fencedJSON = regexp.MustCompile("```(?:json)?\\s*([\\s\\S]*?)\\s*```")

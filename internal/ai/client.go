@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lawndlwd/code-review/internal/types"
+	"github.com/lawndlwd/golum/internal/types"
 )
 
 type Client struct {

@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lawndlwd/code-review/internal/types"
+	"github.com/lawndlwd/golum/internal/types"
 )
 
 type LocalOptions struct {

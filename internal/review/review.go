@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/lawndlwd/code-review/internal/ai"
-	diffpkg "github.com/lawndlwd/code-review/internal/diff"
-	"github.com/lawndlwd/code-review/internal/parser"
-	"github.com/lawndlwd/code-review/internal/types"
+	"github.com/lawndlwd/golum/internal/ai"
+	diffpkg "github.com/lawndlwd/golum/internal/diff"
+	"github.com/lawndlwd/golum/internal/parser"
+	"github.com/lawndlwd/golum/internal/types"
 )
 
 func Review(ctx context.Context, client *ai.Client, p *parser.Parser, best string, diffs []types.FileDiff, repoPath, targetBranch string, useTreeSitter bool) []types.ReviewComment {

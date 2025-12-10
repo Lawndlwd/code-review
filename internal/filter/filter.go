@@ -3,7 +3,7 @@ package filter
 import (
 	"strings"
 
-	"github.com/lawndlwd/code-review/internal/types"
+	"github.com/lawndlwd/golum/internal/types"
 )
 
 func FilterEligible(files []types.FileDiff, limit int) []types.FileDiff {

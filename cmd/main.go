@@ -8,13 +8,13 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/lawndlwd/code-review/internal/ai"
-	"github.com/lawndlwd/code-review/internal/bestpractices"
-	"github.com/lawndlwd/code-review/internal/filter"
-	"github.com/lawndlwd/code-review/internal/git"
-	"github.com/lawndlwd/code-review/internal/output"
-	"github.com/lawndlwd/code-review/internal/parser"
-	"github.com/lawndlwd/code-review/internal/review"
+	"github.com/lawndlwd/golum/internal/ai"
+	"github.com/lawndlwd/golum/internal/bestpractices"
+	"github.com/lawndlwd/golum/internal/filter"
+	"github.com/lawndlwd/golum/internal/git"
+	"github.com/lawndlwd/golum/internal/output"
+	"github.com/lawndlwd/golum/internal/parser"
+	"github.com/lawndlwd/golum/internal/review"
 	"github.com/spf13/pflag"
 )
 
@@ -92,7 +92,7 @@ func loadConfig() (config, error) {
 
 	fs := pflag.NewFlagSet("review", pflag.ExitOnError)
 	fs.Usage = func() {
-		fmt.Fprintf(os.Stderr, "AI code review CLI with Tree-sitter\n\nExamples:\n  code-review --project-path ../project-name --target-branch origin/main --ai-token $AI_TOKEN --rules-file ./rules/rules.md\n  code-review --project-path ../project-name --target-branch origin/main --ai-token $AI_TOKEN --rules-file /path/to/rules\n\nFlags:\n")
+		fmt.Fprintf(os.Stderr, "AI code review CLI with Tree-sitter\n\nExamples:\n  golum --project-path ../project-name --target-branch origin/main --ai-token $AI_TOKEN --rules-file ./rules/rules.md\n  golum --project-path ../project-name --target-branch origin/main --ai-token $AI_TOKEN --rules-file /path/to/rules\n\nFlags:\n")
 		fs.PrintDefaults()
 	}
 	aiToken := fs.String("ai-token", env("", "SCW_SECRET_KEY_AI_USER", "AI_TOKEN"), "Scaleway AI token")

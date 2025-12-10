@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lawndlwd/code-review/internal/parser"
-	"github.com/lawndlwd/code-review/internal/types"
+	"github.com/lawndlwd/golum/internal/parser"
+	"github.com/lawndlwd/golum/internal/types"
 )
 
 func ParseChangedLines(diff string) []int {
