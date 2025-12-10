@@ -1,4 +1,4 @@
-module github.com/lawndlwd/code-review
+module github.com/lawndlwd/golum
 
 go 1.23
 
