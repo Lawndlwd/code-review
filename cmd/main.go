@@ -92,7 +92,7 @@ func loadConfig() (config, error) {
 
 	fs := pflag.NewFlagSet("review", pflag.ExitOnError)
 	fs.Usage = func() {
-		fmt.Fprintf(os.Stderr, "AI code review CLI with Tree-sitter\n\nExamples:\n  code-review --ai-token $AI_TOKEN --rules-file ./rules/rules.md\n  code-review --ai-token $AI_TOKEN --target-branch main --rules-file /path/to/rules\n\nFlags:\n")
+		fmt.Fprintf(os.Stderr, "AI code review CLI with Tree-sitter\n\nExamples:\n  code-review --project-path ../project-name --target-branch origin/main --ai-token $AI_TOKEN --rules-file ./rules/rules.md\n  code-review --project-path ../project-name --target-branch origin/main --ai-token $AI_TOKEN --rules-file /path/to/rules\n\nFlags:\n")
 		fs.PrintDefaults()
 	}
 	aiToken := fs.String("ai-token", env("", "SCW_SECRET_KEY_AI_USER", "AI_TOKEN"), "Scaleway AI token")
@@ -103,7 +103,7 @@ func loadConfig() (config, error) {
 	rulesDir := fs.String("rules-dir", defaultRulesDir(), "Rules directory (ignored if --rules-file is set)")
 	useTreeSitter := fs.Bool("tree-sitter", envBool("USE_TREE_SITTER", true), "Use Tree-sitter for enhanced context")
 
-	repoPath := fs.String("path", ".", "Path to repository when running locally")
+	repoPath := fs.String("project-path", ".", "Path to repository when running locally")
 	targetBranch := fs.String("target-branch", env("HEAD", "TARGET_BRANCH"), "Base branch for local diffs")
 	local := fs.Bool("local", envBool("LOCAL", false), "Compare local changes (staged + unstaged) to origin/target-branch")
 

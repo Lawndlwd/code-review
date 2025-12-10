@@ -8,6 +8,8 @@ AI-powered code review tool that analyzes TypeScript/JavaScript changes against 
 
 ```bash
 go run github.com/lawndlwd/code-review@main \
+  --project-path ../project-name \
+  --target-branch origin/main \
   --ai-token $AI_TOKEN \
   --rules-file ./rules/rules.md
 ```
@@ -16,10 +18,10 @@ go run github.com/lawndlwd/code-review@main \
 
 ```bash
 # Install
-go install github.com/lawndlwd/code-review@latest
+go install github.com/lawndlwd/code-review@main
 
 # Run
-code-review --ai-token $AI_TOKEN --rules-file ./rules/rules.md
+code-review --project-path ../shire/ --target-branch origin/main --ai-token $AI_TOKEN --rules-file ./rules/rules.md
 ```
 
 ## Prerequisites
@@ -35,6 +37,8 @@ code-review --ai-token $AI_TOKEN --rules-file ./rules/rules.md
 
 ```bash
 go run github.com/lawndlwd/code-review@main \
+  --project-path ../project-name \
+  --target-branch origin/main \
   --ai-token $AI_TOKEN \
   --rules-file ./rules/rules.md
 ```
@@ -43,9 +47,10 @@ go run github.com/lawndlwd/code-review@main \
 
 ```bash
 go run github.com/lawndlwd/code-review@main \
+  --project-path ../project-name \
+  --target-branch origin/main \
   --ai-token $AI_TOKEN \
-  --rules-file ./rules/rules.md \
-  --target-branch main
+  --rules-file ./rules/rules.md
 ```
 
 ### Review Local Changes vs Remote
@@ -54,9 +59,10 @@ Compare your local (staged + unstaged) changes against a remote branch:
 
 ```bash
 go run github.com/lawndlwd/code-review@main \
+  --project-path ../project-name \
+  --target-branch origin/main \
   --ai-token $AI_TOKEN \
   --rules-file ./rules/rules.md \
-  --target-branch main \
   --local
 ```
 
@@ -89,7 +95,7 @@ go run github.com/lawndlwd/code-review@main \
 
 | Option | Description | Default | Environment Variable |
 |--------|-------------|----------|---------------------|
-| `--path` | Path to repository | `.` | - |
+| `--project-path` | Path to repository | `.` | - |
 | `--target-branch` | Base branch for comparison | `HEAD` | `TARGET_BRANCH` |
 | `--local` | Compare local changes to origin/target-branch | `false` | `LOCAL` |
 
@@ -105,9 +111,11 @@ go run github.com/lawndlwd/code-review@main \
 
 ```bash
 export AI_TOKEN="your-token-here"
-export TARGET_BRANCH="main"
+export TARGET_BRANCH="origin/main"
 
 go run github.com/lawndlwd/code-review@main \
+  --project-path ../project-name \
+  --target-branch origin/main \
   --rules-file ./rules/rules.md
 ```
 
@@ -115,6 +123,8 @@ go run github.com/lawndlwd/code-review@main \
 
 ```bash
 go run github.com/lawndlwd/code-review@main \
+  --project-path ../project-name \
+  --target-branch origin/main \
   --ai-token $OPENAI_API_KEY \
   --ai-endpoint https://api.openai.com/v1 \
   --ai-model gpt-4 \
@@ -127,6 +137,8 @@ If you have a directory with multiple `.md` files:
 
 ```bash
 go run github.com/lawndlwd/code-review@main \
+  --project-path ../project-name \
+  --target-branch origin/main \
   --ai-token $AI_TOKEN \
   --rules-file ./rules/
 ```
@@ -137,10 +149,10 @@ All `.md` files in the directory will be loaded and combined.
 
 ```bash
 go run github.com/lawndlwd/code-review@main \
+  --project-path /path/to/your/repo \
+  --target-branch origin/main \
   --ai-token $AI_TOKEN \
-  --rules-file ./rules/rules.md \
-  --path /path/to/your/repo \
-  --target-branch main
+  --rules-file ./rules/rules.md
 ```
 
 ## Rules File Format
@@ -240,9 +252,7 @@ code-review/
 ## Next Steps / Future Improvements
 
 - [ ] **MCP Integration for Enhanced Reviews**: Integrate with Model Context Protocol (MCP) to search information from a list of resources (documentation, codebase knowledge, API specs) for more accurate and context-aware code reviews
-- [ ] **GitLab Merge Request Integration**: Add support for reviewing GitLab MRs directly with `--gitlab-host`, `--gitlab-token`, and `--gitlab-project` flags to fetch and review MR diffs automatically
-- [ ] **GitHub Pull Request Integration**: Extend support to GitHub PRs with `--github-token` and `--github-repo` flags for seamless PR review workflow
-- [ ] **CI/CD Integration**: Add support for running reviews in CI/CD pipelines with exit codes and formatted output for automated checks
+- [ ] **GitLab MR Integration**: Add support for reviewing GitLab MRs directly with `--gitlab-host`, `--gitlab-token`, and `--gitlab-project` flags to fetch and review MR diffs automatically
 - [ ] **Incremental Reviews**: Support reviewing only new changes since last review to avoid re-reviewing unchanged code
 - [ ] **Custom Severity Levels**: Allow users to define custom severity levels and their meanings in the rules file
 - [ ] **Multi-language Support**: Extend beyond TypeScript/JavaScript to support Python, Go, Rust, and other languages with appropriate parsers
@@ -252,28 +262,3 @@ code-review/
 - [ ] **Webhook Support**: Add webhook support to automatically trigger reviews on MR/PR events
 - [ ] **Parallel Processing**: Process multiple files in parallel for faster reviews on large codebases
 - [ ] **Caching**: Cache parsed code context and AI responses to speed up repeated reviews
-
-## Troubleshooting
-
-### Rules File Not Found
-
-Make sure to use an absolute or relative path:
-
-```bash
-# Relative path
---rules-file ./rules/rules.md
-
-# Absolute path
---rules-file /absolute/path/to/rules.md
-```
-
-### No Files to Review
-
-Ensure you have:
-- Uncommitted changes, OR
-- A valid target branch to compare against
-- TypeScript/JavaScript files in your changes
-
-### Tree-sitter Initialization Failed
-
-The tool will automatically fall back to simple diff analysis. This is usually fine, but you'll get less context around changed lines.
